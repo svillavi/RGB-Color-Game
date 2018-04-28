@@ -66,3 +66,20 @@ function randomColor(){
 	
 	return "rgb(" + r + ", " + g + ", " + b + ")";
 }
+
+
+for(var i=0; i < squares.length; i++){
+
+	//add event listener, per square - mouseover.
+	squares[i].addEventListener("mouseover", function(){
+		this.classList.add("hoveron");
+	});
+}
+
+for(var i=0; i < squares.length; i++){
+	//add event listener, per square - mouseoff:
+	squares[i].addEventListener("mouseout", function(){
+		//using the classList.remove enables to "squares" to return to their original position.
+		this.classList.remove("hoveron");
+	});
+}	
