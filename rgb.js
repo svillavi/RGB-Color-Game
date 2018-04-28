@@ -1,16 +1,9 @@
-var colors = ["rgb(255, 0, 0)",
-			  "rgb(0, 255, 255)",
-			  "rgb(0, 255, 0)",
-			  "rgb(255, 255, 0)",
-			  "rgb(255, 0, 0)",
-			  "rgb(0, 0, 255)"
-];
-
+var colors = genRandomColors(6);
 var cSpan = document.querySelector("#cSpan");
 var cSpanContainer = document.querySelector(".cSpanContainer");
 var squares = document.querySelectorAll(".square");
 var messageSpan = document.querySelector(".messageContainer");
-var pickedColor = colors[3];
+var pickedColor = pickColor();
 
 cSpan.textContent = pickedColor;
 
@@ -41,8 +34,35 @@ function changeColors(color){
 		//change colors of all elements to correctly selected color
 		squares[i].style.backgroundColor = color;
 		cSpanContainer.style.backgroundColor = color;
-		}
 	}
+}
 
+function pickColor(){
+	var random = Math.floor(Math.random() * colors.length);
+	return colors[random];
+}
+
+function genRandomColors(num){
+	//make array
+	var arr = [];
 	
+	//add num random colors array
+	for(var i=0; i < num; i++){
+		arr.push(randomColor());
+	}
+	//return that array
+	return arr;
+}
+
+//Note: Initial bug, when comparing "clicked" vs "picked", it wasn't comaring correctly. Checked CSS for set div color, it was set initially during mockup of the app, to give the divs identifying colors; Default color"purple" and added spaces accordingly. 
+//Note: to verify that the two values(clicked/picked) are the same, run a console.log(clickedColor, pickedColor) and compare and contrast the two.
+function randomColor(){   
+	//pick a "red" 0 -255
+	var r = Math.floor(Math.random() * 256);
+	//pick a "green" 0 -255
+	var g = Math.floor(Math.random() * 256);
+	//pick a "blue" 0 -255
+	var b = Math.floor(Math.random() * 256);
 	
+	return "rgb(" + r + ", " + g + ", " + b + ")";
+}
