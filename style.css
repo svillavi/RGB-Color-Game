@@ -1,0 +1,31 @@
+body {
+	background-color: #232323;
+}
+
+.square {
+	width: 30%;
+	background: purple;
+	padding-bottom: 30%;
+	float: left;
+	margin: 1.66%;
+	border-radius: 15%
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+h1 {
+	text-align: center;
+	color: white;
+	font-family: Audiowide;
+	text-transform: capitalize;
+	letter-spacing: 2px;
+}
+
+.messageContainer {
+	text-align: center;
+	color: white;
+	font-family: Audiowide;
+}
