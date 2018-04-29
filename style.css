@@ -17,19 +17,46 @@ body {
 }
 
 h1 {
+	height: 50px;
+	background: #708090;
 	text-align: center;
-	color: white;
+	color: #F5F5F5;
 	font-family: Audiowide;
 	text-transform: capitalize;
 	letter-spacing: 2px;
+	height: 100px;
 }
 
-.messageContainer {
+#messageContainer{
 	text-align: center;
-	color: white;
+	color: black;
 	font-family: Audiowide;
+	background-color: white;
+	height: 30px;
 }
 
 .hoveron {
-	transform: translate(10px, 5px);
+	transform: translate(5px, 5px);
+	transition-duration: 0.2s;
+	transition-timing-function: linear;
+	/*transition-delay: 0.5s;*/
+}
+
+#newColors {
+	font-family: Audiowide;
+	font-weight: 300;
+}
+
+#easyMode {
+	font-family: Audiowide;
+	font-weight: 300;
+}
+
+#hardMode {
+	font-family: Audiowide;
+	font-weight: 300;
+}
+
+.selected {
+	background-color: #98FB98;
 }

@@ -2,9 +2,61 @@ var colors = genRandomColors(6);
 var cSpan = document.querySelector("#cSpan");
 var cSpanContainer = document.querySelector(".cSpanContainer");
 var squares = document.querySelectorAll(".square");
-var messageSpan = document.querySelector(".messageContainer");
+var messageSpan = document.querySelector("#message");
 var pickedColor = pickColor();
 
+
+//Buttons object Array:
+var btnsArray = new Array;
+
+//create - easyBtn:#easyMode, hardBtn:#hardMode, reset:#newColors;
+var easyBtn = document.querySelector("#easyMode");
+var hardBtn = document.querySelector("#hardMode");
+var reset = document.querySelector("#newColors");
+
+//add/push to new Array:
+btnsArray.push(easyBtn);
+btnsArray.push(hardBtn);
+btnsArray.push(reset);
+
+//for-loop to iterate over btnsArray - mouseover:
+for(var i=0; i < btnsArray.length; i++){
+	btnsArray[i].addEventListener("mouseover", function(){
+	//assign backgroundColor to buttons:
+	this.classList.add(selected);
+	});
+}
+
+//for-loop to iterate over btnsArray - mouseout:
+for(var i=0; i < btnsArray.length; i++){
+	btnsArray[i].addEventListener("mouseout", function(){
+	//remove assigned backgroundColor to buttons:
+	this.classList.add(selected);
+	});
+}
+
+//Reset button logic:
+reset.addEventListener("click", function(){
+	//Generate new colors:
+	colors = genRandomColors(6);
+	//Pick a new random color from array:
+	pickedColor = pickColor();
+	//change color of main display
+	cSpan.textContent = pickedColor;
+	
+
+	for(var i=0; i < squares.length; i++){
+		//Change colors of all squares:
+		squares[i].style.backgroundColor = colors[i];
+		//Change main display background color:
+		cSpanContainer.style.backgroundColor = "#708090";
+		//Hide the cSpan message when reset:
+		messageSpan.textContent = "";
+	}
+});
+
+
+//Initial square logic:
 cSpan.textContent = pickedColor;
 
 for(var i=0; i < squares.length; i++){
@@ -13,17 +65,16 @@ for(var i=0; i < squares.length; i++){
 
 	//add event listener, per square.
 	squares[i].addEventListener("click", function(){
+	//grab color of clicked element.
+	var clickedColor = this.style.backgroundColor;
 
-		//grab color of clicked element.
-		var clickedColor = this.style.backgroundColor;
-
-		//compare clicked color to picked color.
-		if(clickedColor === pickedColor){
-			messageSpan.textContent = "Correct!";
-			changeColors(clickedColor);
-		}else{
-			this.style.backgroundColor = "#232323";
-			messageSpan.textContent = "Try again!";
+	//compare clicked color to picked color.
+	if(clickedColor === pickedColor){
+		messageSpan.textContent = "Correct!";
+		changeColors(clickedColor);
+	}else{
+		this.style.backgroundColor = "#232323";
+		messageSpan.textContent = "Try again!";
 		}
 	});
 }
@@ -54,8 +105,8 @@ function genRandomColors(num){
 	return arr;
 }
 
-//Note: Initial bug, when comparing "clicked" vs "picked", it wasn't comaring correctly. Checked CSS for set div color, it was set initially during mockup of the app, to give the divs identifying colors; Default color"purple" and added spaces accordingly. 
-//Note: to verify that the two values(clicked/picked) are the same, run a console.log(clickedColor, pickedColor) and compare and contrast the two.
+ //Note: Initial bug, when comparing "clicked" vs "picked", it wasn't comaring correctly. Checked CSS for set div color, it was set initially during mockup of the app, to give the divs identifying colors; Default color"purple" and added spaces accordingly. 
+ //Note: to verify that the two values(clicked/picked) are the same, run a console.log(clickedColor, pickedColor) and compare and contrast the two.
 function randomColor(){   
 	//pick a "red" 0 -255
 	var r = Math.floor(Math.random() * 256);
@@ -73,6 +124,7 @@ for(var i=0; i < squares.length; i++){
 	//add event listener, per square - mouseover.
 	squares[i].addEventListener("mouseover", function(){
 		this.classList.add("hoveron");
+		
 	});
 }
 
@@ -82,4 +134,4 @@ for(var i=0; i < squares.length; i++){
 		//using the classList.remove enables to "squares" to return to their original position.
 		this.classList.remove("hoveron");
 	});
-}	
+}
