@@ -23,7 +23,7 @@ btnsArray.push(reset);
 for(var i=0; i < btnsArray.length; i++){
 	btnsArray[i].addEventListener("mouseover", function(){
 	//assign backgroundColor to buttons:
-	this.classList.add(selected);
+	this.classList.add("selected");
 	});
 }
 
@@ -31,7 +31,7 @@ for(var i=0; i < btnsArray.length; i++){
 for(var i=0; i < btnsArray.length; i++){
 	btnsArray[i].addEventListener("mouseout", function(){
 	//remove assigned backgroundColor to buttons:
-	this.classList.add(selected);
+	this.classList.remove("selected");
 	});
 }
 

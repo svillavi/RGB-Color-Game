@@ -59,4 +59,8 @@ h1 {
 
 .selected {
 	background-color: #98FB98;
+	transition-duration: 0.2s;
+	transition-delay: 0.1s;
+	transition-timing-function: linear;
 }
+
