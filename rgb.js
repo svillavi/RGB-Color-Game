@@ -5,7 +5,6 @@ var squares = document.querySelectorAll(".square");
 var messageSpan = document.querySelector("#message");
 var pickedColor = pickColor();
 
-
 //Buttons object Array:
 var btnsArray = new Array;
 
@@ -14,10 +13,32 @@ var easyBtn = document.querySelector("#easyMode");
 var hardBtn = document.querySelector("#hardMode");
 var reset = document.querySelector("#newColors");
 
-//add/push to new Array:
+//add/push to new Buttons Array Object:
 btnsArray.push(easyBtn);
 btnsArray.push(hardBtn);
 btnsArray.push(reset);
+
+//Change button mode - Easy:
+easyBtn.addEventListener("click", function(){
+	easyBtn.classList.add("modeSelect");
+	hardBtn.classList.remove("modeSelect");
+	colors = genRandomColors(3);
+	pickedColor = pickColor();
+	cSpan.textContent = pickedColor;
+	for(var i=0; i < squares.length; i++){
+		if(colors[i]){
+			squares[i].style.backgroundColor = colors[i];
+		}else{
+			squares[i].style.display = "none"
+		}
+	}
+});
+
+//Change button mode - Hard:
+hardBtn.addEventListener("click", function(){
+	easyBtn.classList.remove("modeSelect");
+	hardBtn.classList.add("modeSelect");
+});
 
 //for-loop to iterate over btnsArray - mouseover:
 for(var i=0; i < btnsArray.length; i++){
@@ -78,7 +99,7 @@ for(var i=0; i < squares.length; i++){
 		}
 	});
 }
-
+//Assign colors to all squares:
 function changeColors(color){
 	//loop through all elements
 	for(var i=0; i < squares.length; i++){

@@ -64,3 +64,6 @@ h1 {
 	transition-timing-function: linear;
 }
 
+.modeSelect {
+	background-color: #98FB98;
+}
